@@ -15,15 +15,21 @@ pounds = {
 }
 
 # Função que realiza o cálculo final
-def calc_risk(plastic, oxygen, oil):
-    risk = (
-        plastic * pounds['plastic']
-        + oxygen * pounds['oxygen']
-        + oil * pounds['oil']
-    )
+def calc_risk(values: list[int]):
+    # Verificando se a lista de variáveis é do mesmo tamanho da de pesos
+    if len(values) != len(pounds):
+        raise ValueError('O número de valores deve corresponder ao número de variáveis (pesos).')
 
-    # O risco total é calculado pela soma de todas a variáveis com seus pesos
+    # Normalização dos valores das variáveis (0-1)
+    normalized_values = [value / 100 for value in values]
 
+    # Cálculo ponderado e normalizado do risco total
+    risk = 0
+    for i, key in enumerate(pounds):
+        risk += normalized_values[i] * pounds[key]
+
+    # Garantindo resultado entre 0 e 100
+    risk *= 100
     return risk
 
 # Função responsável por mudar a cor de fundo da interface
@@ -90,7 +96,7 @@ def main():
         )
         
     # LÓGICA
-    total_risk = calc_risk(plastic, oxygen, oil)
+    total_risk = calc_risk([plastic, oxygen, oil])
 
     if total_risk > 70:
         change_color(colors['high'])
