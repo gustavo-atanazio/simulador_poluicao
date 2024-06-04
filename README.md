@@ -27,7 +27,7 @@ git clone https://github.com/gustavo-atanazio/simulador_poluicao.git
 cd simulador_poluicao
 ```
 
-2. Crie um ambiente virtual (opcional, mas recomendado):
+2. Crie um ambiente virtual (recomendado):
 
 ```bash
 python -m venv myenv
