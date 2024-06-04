@@ -11,7 +11,8 @@ colors = {
 pounds = {
     'plastic': 0.65,
     'oxygen': 0.45,
-    'oil': 0.85
+    'oil': 0.75,
+    'temp': 0.9
 }
 
 # Função que realiza o cálculo final
@@ -61,7 +62,7 @@ def main():
             0, # Mínimo
             100, # Máximo
             0, # Valor inicial
-            help = '' # Texto de apoio
+            help = 'O plástico é o principal componente poluidor atualmente, representando uma grande ameaça à vida marinha.'
         )
 
         oxygen = st.slider(
@@ -69,7 +70,7 @@ def main():
             0,
             100,
             0,
-            help = ''
+            help = 'O oxigênio é vital para a sobrevivência dos organismos marinhos. Níveis baixos podem indicar áreas mortas nos oceanos.'
         )
 
         oil = st.slider(
@@ -77,12 +78,20 @@ def main():
             0,
             100,
             0,
-            help = ''
+            help = 'Derramamentos de petróleo têm efeitos devastadores sobre o meio ambiente marinho, afetando a vida aquática e a qualidade da água.'
+        )
+
+        temp = st.slider(
+            'Temperatura da água',
+            0,
+            100,
+            0,
+            help = 'A temperatura da água influencia muitos processos biológicos e pode ser afetada pelas mudanças climáticas.'
         )
 
     data = {
-        'Valores': [plastic, oxygen, oil], # Lista de valores
-        'Nomes': ['Plástico', 'Oxigênio', 'Petróleo'] # Labels
+        'Valores': [plastic, oxygen, oil, temp], # Lista de valores
+        'Nomes': ['Plástico', 'Oxigênio', 'Petróleo', 'Temperatura'] # Labels
     }
 
     ## GRÁFICO
@@ -96,7 +105,7 @@ def main():
         )
         
     # LÓGICA
-    total_risk = calc_risk([plastic, oxygen, oil])
+    total_risk = calc_risk([plastic, oxygen, oil, temp])
 
     if total_risk > 70:
         change_color(colors['high'])
