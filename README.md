@@ -75,5 +75,5 @@ def calc_risk(values: list[int]):
 
 ## Integrantes
 
-- [Gustavo Atanazio](https://github.com/gustavo-atanazio), 1ESA
-- [Lucca Cardinale](https://github.com/luccacardinale), 1ESA
+- [Gustavo Atanazio](https://github.com/gustavo-atanazio), 1ESA, 559098
+- [Lucca Cardinale](https://github.com/luccacardinale), 1ESA, 556668
